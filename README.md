@@ -1,1 +1,2 @@
-# movement-primitive-diffusion
+# Movement Primitive Diffusion
+Coming soon.
