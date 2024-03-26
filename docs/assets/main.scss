@@ -25,8 +25,8 @@ table {
   th, td {
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 1px;
+    padding-right: 1px;
   }
   th {
     background-color: transparent;
@@ -35,12 +35,6 @@ table {
   td {
     border: 0;
     vertical-align: top;
-  }
-
-  @include media-query($on-laptop) {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-            -ms-overflow-style: -ms-autohiding-scrollbar;
+    width: 25%;
   }
 }
