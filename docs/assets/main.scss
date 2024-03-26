@@ -1,0 +1,46 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+
+/**
+ * Tables
+ */
+table {
+  color: black;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 0;
+  tr {
+    &:nth-child(even) {
+      background-color: transparent;
+    }
+    &:nth-child(odd) {
+      background-color: transparent;
+    }
+  }
+  th, td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  th {
+    background-color: transparent;
+    border: 0;
+  }
+  td {
+    border: 0;
+    vertical-align: top;
+  }
+
+  @include media-query($on-laptop) {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+}
