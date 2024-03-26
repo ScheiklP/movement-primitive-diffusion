@@ -26,7 +26,7 @@ for high-quality robotic motion generation that focuses on gentle manipulation o
 
 ---
 
-<table>
+<table style="width: 100%;">
   <tr>
     <td colspan="4" style="font-size=24px;">
         <b style="font-size: 24px; text-align: center;">
@@ -35,17 +35,17 @@ Simulation Tasks
     </td>
   </tr>
   <tr>
-    <td width="175">
-      <img src="assets/media/btm.gif" width="175">
+    <td>
+      <img src="assets/media/btm.gif" style="width: 100%; max-width: 175px; height: auto;">
     </td>
-    <td width="175">
-      <img src="assets/media/glt.gif" width="175">
+    <td>
+      <img src="assets/media/glt.gif" style="width: 100%; max-width: 175px; height: auto;">
     </td>
-    <td width="175">
-      <img src="assets/media/rt.gif" width="175">
+    <td>
+      <img src="assets/media/rt.gif" style="width: 100%; max-width: 175px; height: auto;">
     </td>
-    <td width="175">
-      <img src="assets/media/ll.gif" width="175">
+    <td>
+      <img src="assets/media/ll.gif" style="width: 100%; max-width: 175px; height: auto;">
     </td>
   </tr>
   <tr>
@@ -56,17 +56,17 @@ Real-World Tasks
     </td>
   </tr>
   <tr>
-    <td width="175">
-      <img src="assets/media/rwbtm.gif" width="175">
+    <td>
+      <img src="assets/media/rwbtm.gif" style="width: 100%; max-width: 175px; height: auto;">
     </td>
-    <td width="175">
-      <img src="assets/media/rwglt.gif" width="175">
+    <td>
+      <img src="assets/media/rwglt.gif" style="width: 100%; max-width: 175px; height: auto;">
     </td>
-    <td width="175">
-      <img src="assets/media/rwrt.gif" width="175">
+    <td>
+      <img src="assets/media/rwrt.gif" style="width: 100%; max-width: 175px; height: auto;">
     </td>
-    <td width="175">
-      <img src="assets/media/rwll.gif" width="175">
+    <td>
+      <img src="assets/media/rwll.gif" style="width: 100%; max-width: 175px; height: auto;">
     </td>
   </tr>
   <tr>
@@ -119,7 +119,7 @@ Baselines: <a href="https://openreview.net/forum?id=nvtxqMGpn1">BESO</a> | <a hr
 Architectural Overview
 </b>
 </p>
-<img src="assets/media/mpd.gif">
+<img src="assets/media/mpd.gif" style="width: 100%; height: auto;">
 
 <p style="margin-top: 10px; margin-bottom: 20px; text-align: center">
 MPD iteratively refines a noisy sequence of actions into a denoised vector of weights for a Probabilistic Dynamic Movement Primitive (ProDMP).
@@ -136,10 +136,10 @@ Multi-Modal Behaviors
 
 <table>
   <tr>
-    <td width="300">
-      <img src="assets/media/mm.gif" width="300">
+    <td style="width: 50%;">
+      <img src="assets/media/mm.gif" style="width: 100%; max-width: 300px; height: auto;">
     </td>
-    <td style="vertical-align: middle; padding-left:20px">
+    <td style="vertical-align: middle; padding-left:20px; width: 50%;">
 MPD is able to represent multi-modal behaviors for the same task, generating versatile motions.
 The mode of the generated motion depends on the initial random sample that is refined by MPD.
     </td>
