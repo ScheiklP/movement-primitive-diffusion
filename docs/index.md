@@ -20,7 +20,8 @@ for high-quality robotic motion generation that focuses on gentle manipulation o
 ---
 
 <p style="text-align:center; font-size: 24px; margin-top: 20px; margin-bottom: 20px;">
-    <a href="https://doi.org/10.1109/LRA.2024.3382529"><i class="fas fa-file-pdf"></i> Paper</a> |
+    <a href="https://doi.org/10.1109/LRA.2024.3382529"><i class="fas fa-file-pdf"></i> Paper (IEEE Xplore)</a> |
+    <a href="https://arxiv.org/abs/2312.10008"><i class="fas fa-file-pdf"></i> Paper (arXiv)</a> |
     <a href="https://github.com/ScheiklP/movement-primitive-diffusion"><i class="fas fa-code"></i> Code</a>
 </p>
 
