@@ -156,11 +156,15 @@ BibTeX
 </b>
 </p>
 ```bibtex
-@article{scheikl2024mpd,
-  title = {Movement Primitive Diffusion: Learning Gentle Robotic Manipulation of Deformable Objects},
-  author = {Scheikl, Paul Maria and Schreiber, Nicolas and Haas, Christoph and Freymuth, Niklas and Neumann, Gerhard and Lioutikov, Rudolf and {Mathis-Ullrich}, Franziska},
-  year = {2024},
-  journal = {IEEE Robotics and Automation Letters},
+@article{Scheikl2024MPD,
+  author={Scheikl, Paul Maria and Schreiber, Nicolas and Haas, Christoph and Freymuth, Niklas and Neumann, Gerhard and Lioutikov, Rudolf and Mathis-Ullrich, Franziska},
+  title={Movement Primitive Diffusion: Learning Gentle Robotic Manipulation of Deformable Objects},
+  journal={IEEE Robotics and Automation Letters},
+  year={2024},
+  volume={9},
+  number={6},
+  pages={5338-5345},
+  doi={10.1109/LRA.2024.3382529},
 }
 ```
 
