@@ -1,6 +1,39 @@
 # Movement Primitive Diffusion
 Movement Primitive Diffusion (MPD) is a diffusion-based imitation learning method for high-quality robotic motion generation
-that focuses on gentle manipulation of deformable objects.
+that focuses on gentle manipulation of deformable objects. [Project Page](https://scheiklp.github.io/movement-primitive-diffusion)
+
+<table style="width: 100%;">
+  <tr>
+    <td>
+      <img src="docs/assets/media/rwbtm.gif" style="width: 100%; max-width: 175px; height: auto;">
+    </td>
+    <td>
+      <img src="docs/assets/media/rwglt.gif" style="width: 100%; max-width: 175px; height: auto;">
+    </td>
+    <td>
+      <img src="docs/assets/media/rwrt.gif" style="width: 100%; max-width: 175px; height: auto;">
+    </td>
+    <td>
+      <img src="docs/assets/media/rwll.gif" style="width: 100%; max-width: 175px; height: auto;">
+    </td>
+  </tr>
+  <tr>
+    <td style="font-size: 11px;">
+Bimanual Tissue Manipulation
+    </td>
+    <td style="font-size: 11px;">
+Grasp Lift Touch
+    </td>
+    <td style="font-size: 11px;">
+Rope Threading
+    </td>
+    <td style="font-size: 11px;">
+Ligating Loop
+    </td>
+  </tr>
+</table>
+
+
 
 ## Getting Started
 ### Installation
@@ -321,7 +354,7 @@ If you use the project in your work, please consider citing it with:
 ```bibtex
 @article{Scheikl2024MPD,
   author={Scheikl, Paul Maria and Schreiber, Nicolas and Haas, Christoph and Freymuth, Niklas and Neumann, Gerhard and Lioutikov, Rudolf and Mathis-Ullrich, Franziska},
-  title   = {Movement Primitive Diffusion: Learning Gentle Robotic Manipulation of Deformable Objects},
+  title={Movement Primitive Diffusion: Learning Gentle Robotic Manipulation of Deformable Objects},
   journal={IEEE Robotics and Automation Letters}, 
   year={2024},
   volume={9},
