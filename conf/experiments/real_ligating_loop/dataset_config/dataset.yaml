@@ -1,0 +1,75 @@
+# @package dataset_config
+_target_: movement_primitive_diffusion.datasets.trajectory_dataset.SubsequenceTrajectoryDataset
+_recursive_: False
+
+subsequence_length: ${eval:'${t_obs}+${t_pred}-1'}
+trajectory_dirs: null # set in python code
+keys:
+  - joint_values
+  - joint_velocities
+  - raw_force
+  - tool_position
+  - tool_position_action
+  - tool_position_velocity
+  - tool_position_velocity_action
+  - tool_roll
+  - tool_roll_action
+  - tool_roll_velocity
+  - tool_roll_velocity_action
+
+dt: 0.1
+target_dt: null
+normalize_keys:
+  - joint_values
+  - joint_velocities
+  - tool_position
+  - tool_position_action
+  - tool_position_velocity
+  - tool_position_velocity_action
+  - tool_roll
+  - tool_roll_action
+  - tool_roll_velocity
+  - tool_roll_velocity_action
+normalize_symmetrically: True # False: normalized to [0, 1] instead of [-1, 1]
+standardize_keys:
+  - raw_force
+scaler_values:
+  joint_values:
+    min: null
+    max: null
+  joint_velocities:
+    min: null
+    max: null
+  raw_force:
+    mean: null
+    std: null
+  tool_position:
+    min: null
+    max: null
+  tool_position_action:
+    min: null
+    max: null
+  tool_position_velocity:
+    min: null
+    max: null
+  tool_position_velocity_action:
+    min: null
+    max: null
+  tool_roll:
+    min: null
+    max: null
+  tool_roll_action:
+    min: null
+    max: null
+  tool_roll_velocity:
+    min: null
+    max: null
+  tool_roll_velocity_action:
+    min: null
+    max: null
+
+recalculate_velocities_from_to:
+  - [tool_position_action, tool_position_velocity_action]
+  - [tool_roll_action, tool_roll_velocity_action]
+  - [tool_position, tool_position_velocity]
+  - [tool_roll, tool_roll_velocity]

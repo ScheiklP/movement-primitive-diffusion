@@ -1,0 +1,12 @@
+defaults:
+  - prodmp_agent
+  - _self_
+
+special_optimizer_function: True # -> call configure_optimizer function of inner model with special_optimizer_config parameters. Else use optimizer_config
+
+special_optimizer_config:
+  model_weight_decay: 1.0e-3 # PushT: 1.0e-1
+  encoder_weight_decay: 1.0e-6
+  learning_rate: 1.0e-4
+  betas: [0.95, 0.999] # or [0.9, 0.95] or [0.9, 0.9]
+  eps: 1.0e-8

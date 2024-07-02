@@ -1,0 +1,7 @@
+_target_: movement_primitive_diffusion.models.nll_model.NLLModel
+_recursive_: False
+
+defaults:
+  - inner_model_config: nll_decoder
+  - inner_model_config/prodmp_handler_config@prodmp_handler_config: default_config
+  - _self_

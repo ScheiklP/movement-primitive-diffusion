@@ -1,0 +1,15 @@
+_target_: movement_primitive_diffusion.models.mlp_inner_model.MLPInnerModel
+_recursive_: False
+
+state_size: null # set in python based on encoder
+action_size: null # set in python based on process_batch
+
+t_pred: ${t_pred}
+num_layers: 5
+num_neurons: 64
+activation_function: ReLU
+
+sigma_embedding_config:
+  _target_: movement_primitive_diffusion.networks.sigma_embeddings.SinusoidalEmbedding
+  _recursive_: False
+  embedding_size: 14

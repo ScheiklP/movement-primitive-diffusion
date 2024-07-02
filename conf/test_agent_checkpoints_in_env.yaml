@@ -1,0 +1,26 @@
+
+config: ???
+checkpoint_dir: ???
+# For example:
+# config: model_checkpoints/run-id/config.yaml
+# checkpoint_dir: model_checkpoints/run-id/
+
+weight_file_regex: '^model_epoch_([0-9]+)\.pth$'
+
+num_trajectories: 20
+
+to_change:
+  agent_config:
+    sampler_config:
+      _target_: movement_primitive_diffusion.samplers.euler.EulerSampler
+    diffusion_steps: 35
+
+# Set what should be used to determine if model performance increased in testing in environment
+performance_metric: success_rate # can be anything that is returned in the dict of workspace.test_agent(agent)
+performance_direction: max # {min, max}
+
+wandb:
+  project: ???
+  entity: ???
+  group: ???
+  mode: offline # online, offline, disabled

@@ -1,0 +1,2 @@
+_target_: movement_primitive_diffusion.samplers.ddim.DDIMSampler
+_recursive_: False

@@ -1,0 +1,53 @@
+# @package dataset_config
+_target_: movement_primitive_diffusion.datasets.trajectory_dataset.SubsequenceTrajectoryDataset
+_recursive_: False
+
+subsequence_length: ${eval:'${t_obs}+${t_pred}-1'}
+trajectory_dirs: null # set in python code
+keys:
+  - phase
+  - gallbladder_state_normalized
+  - gripper_tpsda_state_action
+  - cauter_tpsd_state_action
+  - gripper_tpsda_velocity_action
+  - cauter_tpsd_velocity_action
+  - gripper_tpsda_state
+  - cauter_tpsd_state
+  - gripper_tpsda_velocity
+  - cauter_tpsd_velocity
+dt: 0.1
+target_dt: null
+normalize_keys:
+  - gripper_tpsda_state_action
+  - cauter_tpsd_state_action
+  - gripper_tpsda_state
+  - cauter_tpsd_state
+normalize_symmetrically: True # False: normalized to [0, 1] instead of [-1, 1]
+standardize_keys: False
+scaler_values:
+  gripper_tpsda_state_action:
+    min: null
+    max: null
+  cauter_tpsd_state_action:
+    min: null
+    max: null
+  gripper_tpsda_state:
+    min: null
+    max: null
+  cauter_tpsd_state:
+    min: null
+    max: null
+  phase:
+    min: null
+    max: null
+
+recalculate_velocities_from_to:
+  - [gripper_tpsda_state_action, gripper_tpsda_velocity_action]
+  - [cauter_tpsd_state_action, cauter_tpsd_velocity_action]
+  - [gripper_tpsda_state, gripper_tpsda_velocity]
+  - [cauter_tpsd_state, cauter_tpsd_velocity]
+
+image_sizes:
+  - [84, 84]
+crop_sizes:
+  - [76, 76]

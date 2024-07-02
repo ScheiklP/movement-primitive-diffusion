@@ -1,0 +1,2 @@
+_target_: movement_primitive_diffusion.samplers.euler_ancestral.EulerAncestralSampler
+_recursive_: False

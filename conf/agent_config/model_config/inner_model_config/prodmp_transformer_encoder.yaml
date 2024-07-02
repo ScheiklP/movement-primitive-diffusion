@@ -1,0 +1,23 @@
+_target_: movement_primitive_diffusion.models.prodmp_transformer_encoder_inner_model.ProDMPTransformerEncoderInnerModel
+_recursive_: False
+
+defaults:
+  - prodmp_handler_config: default_config
+
+state_size: null # set in python based on encoder
+action_size: null # set in python based on process_batch
+
+t_pred: ${t_pred}
+t_obs: ${t_obs}
+
+num_encoder_layers: 16
+num_heads: 8
+embedding_size: 128
+dropout_probability_embedding: 0.0
+dropout_probability_attention: 0.0
+
+sigma_embedding_config:
+  _target_: movement_primitive_diffusion.networks.sigma_embeddings.SinusoidalEmbedding
+  _recursive_: False
+  embedding_size: ${..embedding_size}
+  hidden_size_factor: 4

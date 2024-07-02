@@ -1,0 +1,6 @@
+_target_: movement_primitive_diffusion.models.gmm_model.GMMModel
+_recursive_: False
+
+defaults:
+  - inner_model_config: lstm_gmm
+  - _self_

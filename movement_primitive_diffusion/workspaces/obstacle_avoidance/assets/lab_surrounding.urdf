@@ -1,0 +1,530 @@
+<?xml version="1.0" ?>
+<robot name="lab_surrounding">
+
+  <material name="brown">
+    <color rgba="0.8 0.655 0.45 1"/>
+  </material>
+
+  <material name="silver">
+    <color rgba="0.9 0.9 0.9 1"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+<!--
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="world"/>
+    <child link="table_plane"/>
+  </joint>
+-->
+
+  <link name="table_plane">
+    <visual>
+      <geometry><box size="0.98 1.96 0.002"/></geometry>
+      <material name="brown"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.98 1.96 0.002"/></geometry>
+    </collision>
+  </link>
+
+  <link name="panda_ground">
+    <visual>
+        <geometry><box size="0.36 0.36 0.02"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.36 0.36 0.02"/></geometry>
+    </collision>
+  </link>
+  <joint name="panda_ground_joint" type="fixed">
+    <origin xyz="-0.24 0 0.01" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="panda_ground"/>
+  </joint>
+
+  <link name="front_upper">
+    <visual>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="front_upper_joint" type="fixed">
+    <origin xyz="0.49 0 -0.02" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="front_upper"/>
+  </joint>
+
+  <link name="front_mid">
+    <visual>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="front_mid_joint" type="fixed">
+    <origin xyz="0.49 0 -0.445" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="front_mid"/>
+  </joint>
+
+  <link name="front_lower">
+    <visual>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="front_lower_joint" type="fixed">
+    <origin xyz="0.49 0 -0.87" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="front_lower"/>
+  </joint>
+
+  <link name="back_upper">
+    <visual>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="back_upper_joint" type="fixed">
+    <origin xyz="-0.49 0 -0.02" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="back_upper"/>
+  </joint>
+
+  <link name="back_mid">
+    <visual>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="back_mid_joint" type="fixed">
+    <origin xyz="-0.49 0 -0.445" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="back_mid"/>
+  </joint>
+
+  <link name="back_lower">
+    <visual>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="back_lower_joint" type="fixed">
+    <origin xyz="-0.49 0 -0.87" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="back_lower"/>
+  </joint>
+
+  <link name="vert_front_left">
+    <visual>
+        <geometry><box size="0.04 0.04 0.89"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 0.04 0.89"/></geometry>
+    </collision>
+  </link>
+  <joint name="vert_front_left_joint" type="fixed">
+    <origin xyz="0.49 0.98 -0.445" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="vert_front_left"/>
+  </joint>
+
+  <link name="vert_front_right">
+    <visual>
+        <geometry><box size="0.04 0.04 0.89"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 0.04 0.89"/></geometry>
+    </collision>
+  </link>
+  <joint name="vert_front_right_joint" type="fixed">
+    <origin xyz="0.49 -0.98 -0.445" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="vert_front_right"/>
+  </joint>
+
+  <link name="vert_back_left">
+    <visual>
+        <geometry><box size="0.04 0.04 0.89"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 0.04 0.89"/></geometry>
+    </collision>
+  </link>
+  <joint name="vert_back_left_joint" type="fixed">
+    <origin xyz="-0.49 0.98 -0.445" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="vert_back_left"/>
+  </joint>
+
+  <link name="vert_back_right">
+    <visual>
+        <geometry><box size="0.04 0.04 0.89"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 0.04 0.89"/></geometry>
+    </collision>
+  </link>
+  <joint name="vert_back_right_joint" type="fixed">
+    <origin xyz="-0.49 -0.98 -0.445" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="vert_back_right"/>
+  </joint>
+
+  <link name="side_upper_right">
+    <visual>
+        <geometry><box size="0.94 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.94 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="side_upper_right_joint" type="fixed">
+    <origin xyz="0 -0.98 -0.02" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="side_upper_right"/>
+  </joint>
+
+  <link name="side_lower_right">
+    <visual>
+        <geometry><box size="0.94 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.94 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="side_lower_right_joint" type="fixed">
+    <origin xyz="0 -0.98 -0.87" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="side_lower_right"/>
+  </joint>
+
+  <link name="side_upper_left">
+    <visual>
+        <geometry><box size="0.94 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.94 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="side_upper_left_joint" type="fixed">
+    <origin xyz="0 0.98 -0.02" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="side_upper_left"/>
+  </joint>
+
+  <link name="side_lower_left">
+    <visual>
+        <geometry><box size="0.94 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.94 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="side_lower_left_joint" type="fixed">
+    <origin xyz="0 0.98 -0.87" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="side_lower_left"/>
+  </joint>
+
+  <link name="foot_front_left">
+    <visual>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+        <material name="black"/>
+    </visual>
+    <collision>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+    </collision>
+  </link>
+  <joint name="foot_front_left_joint" type="fixed">
+    <origin xyz="0.49 0.98 -0.9" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="foot_front_left"/>
+  </joint>
+
+  <link name="foot_front_mid">
+    <visual>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+        <material name="black"/>
+    </visual>
+    <collision>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+    </collision>
+  </link>
+  <joint name="foot_front_mid_joint" type="fixed">
+    <origin xyz="0.49 0 -0.9" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="foot_front_mid"/>
+  </joint>
+
+  <link name="foot_front_right">
+    <visual>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+        <material name="black"/>
+    </visual>
+    <collision>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+    </collision>
+  </link>
+  <joint name="foot_front_right_joint" type="fixed">
+    <origin xyz="0.49 -0.98 -0.9" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="foot_front_right"/>
+  </joint>
+
+  <link name="foot_back_left">
+    <visual>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+        <material name="black"/>
+    </visual>
+    <collision>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+    </collision>
+  </link>
+  <joint name="foot_back_left_joint" type="fixed">
+    <origin xyz="-0.49 0.98 -0.9" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="foot_back_left"/>
+  </joint>
+
+  <link name="foot_back_mid">
+    <visual>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+        <material name="black"/>
+    </visual>
+    <collision>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+    </collision>
+  </link>
+  <joint name="foot_back_mid_joint" type="fixed">
+    <origin xyz="-0.49 0 -0.9" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="foot_back_mid"/>
+  </joint>
+
+  <link name="foot_back_right">
+    <visual>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+        <material name="black"/>
+    </visual>
+    <collision>
+        <geometry><cylinder length="0.04" radius="0.02"/></geometry>
+    </collision>
+  </link>
+  <joint name="foot_back_right_joint" type="fixed">
+    <origin xyz="-0.49 -0.98 -0.9" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="foot_back_right"/>
+  </joint>
+
+  <link name="top_back_left">
+    <visual>
+        <geometry><box size="0.04 0.04 1.3"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 0.04 1.3"/></geometry>
+    </collision>
+  </link>
+  <joint name="top_back_left_joint" type="fixed">
+    <origin xyz="-0.49 0.98 0.65" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="top_back_left"/>
+  </joint>
+
+  <link name="top_back_right">
+    <visual>
+        <geometry><box size="0.04 0.04 1.3"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 0.04 1.3"/></geometry>
+    </collision>
+  </link>
+  <joint name="top_back_right_joint" type="fixed">
+    <origin xyz="-0.49 -0.98 0.65" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="top_back_right"/>
+  </joint>
+
+  <link name="top_front">
+    <visual>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="top_front_joint" type="fixed">
+    <origin xyz="0.49 0 1.28" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="top_front"/>
+  </joint>
+
+  <link name="top_back">
+    <visual>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.04 1.92 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="top_back_joint" type="fixed">
+    <origin xyz="-0.49 0 1.28" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="top_back"/>
+  </joint>
+
+  <link name="top_side_right">
+    <visual>
+        <geometry><box size="1.02 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="1.02 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="top_side_right_joint" type="fixed">
+    <origin xyz="0 -0.98 1.28" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="top_side_right"/>
+  </joint>
+
+  <link name="top_side_mid">
+    <visual>
+        <geometry><box size="1.02 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="1.02 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="top_side_mid_joint" type="fixed">
+    <origin xyz="0 0 1.28" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="top_side_mid"/>
+  </joint>
+
+  <link name="top_side_left">
+    <visual>
+        <geometry><box size="1.02 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="1.02 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="top_side_left_joint" type="fixed">
+    <origin xyz="0 0.98 1.28" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="top_side_left"/>
+  </joint>
+
+  <link name="rot_lower_right">
+    <visual>
+        <geometry><box size="0.6 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.6 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="rot_lower_right_joint" type="fixed">
+    <origin xyz="-0.31 0.98 0.22" rpy="0 0.9273 0"/>
+    <parent link="table_plane"/>
+    <child link="rot_lower_right"/>
+  </joint>
+
+  <link name="rot_lower_left">
+    <visual>
+        <geometry><box size="0.6 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.6 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="rot_lower_left_joint" type="fixed">
+    <origin xyz="-0.31 -0.98 0.22" rpy="0 0.9273 0"/>
+    <parent link="table_plane"/>
+    <child link="rot_lower_left"/>
+  </joint>
+
+  <link name="rot_upper_right">
+    <visual>
+        <geometry><box size="0.6 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.6 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="rot_upper_right_joint" type="fixed">
+    <origin xyz="-0.31 0.98 1.04" rpy="3.1416 0.9273 3.1416"/>
+    <parent link="table_plane"/>
+    <child link="rot_upper_right"/>
+  </joint>
+
+  <link name="rot_upper_left">
+    <visual>
+        <geometry><box size="0.6 0.04 0.04"/></geometry>
+        <material name="silver"/>
+    </visual>
+    <collision>
+        <geometry><box size="0.6 0.04 0.04"/></geometry>
+    </collision>
+  </link>
+  <joint name="rot_upper_left_joint" type="fixed">
+    <origin xyz="-0.31 -0.98 1.04" rpy="3.1416 0.9273 3.1416"/>
+    <parent link="table_plane"/>
+    <child link="rot_upper_left"/>
+  </joint>
+
+  <link name="support_body">
+    <visual>
+        <geometry><box size="0.98 1.96 0.8"/></geometry>
+        <material name="support_body_material"><color rgba="0 0 0 0"/></material>
+    </visual>
+    <collision>
+        <geometry><box size="0.98 1.96 0.8"/></geometry>
+    </collision>
+  </link>
+  <joint name="support_body_joint" type="fixed">
+    <origin xyz="0 0 -0.4" rpy="0 0 0"/>
+    <parent link="table_plane"/>
+    <child link="support_body"/>
+  </joint>
+
+</robot>

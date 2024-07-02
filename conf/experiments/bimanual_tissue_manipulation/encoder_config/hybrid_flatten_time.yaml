@@ -1,0 +1,39 @@
+# @package agent_config.encoder_config
+_target_: movement_primitive_diffusion.encoder.Encoder
+_recursive_: False
+
+t_obs: ${t_obs}
+
+# Most simple state based config just flattens out the time and concatenates all the values
+network_configs:
+
+  - observation_key: right_pd_state
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.FlattenTime
+
+  - observation_key: left_pd_state
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.FlattenTime
+
+  - observation_key: right_pd_velocity
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.FlattenTime
+
+  - observation_key: left_pd_velocity
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.FlattenTime
+
+  - observation_key: rgb
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.resnet.IndependentTimeStepsResNet
+      _recursive_: False
+      feature_size: null # set in python based on dataset
+      output_size: ${image_embedding_size}
+
+aggregator_config:
+  _target_: movement_primitive_diffusion.aggregators.concatenate.ConcatenateAggregator

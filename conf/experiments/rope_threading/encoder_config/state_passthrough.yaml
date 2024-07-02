@@ -1,0 +1,32 @@
+# @package agent_config.encoder_config
+_target_: movement_primitive_diffusion.encoder.Encoder
+_recursive_: False
+
+t_obs: ${t_obs}
+
+# Note: The order matters! The same order will be used in process_batch and the encoder
+network_configs:
+
+  - observation_key: gripper_tpsd_state
+    feature_size: null
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.PassThrough
+
+  - observation_key: gripper_tpsd_velocity
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.PassThrough
+
+  - observation_key: eyelet_center_pose
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.PassThrough
+
+  - observation_key: rope_tracking_points_normalized
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.PassThrough
+
+
+aggregator_config:
+  _target_: movement_primitive_diffusion.aggregators.concatenate.ConcatenateAggregator

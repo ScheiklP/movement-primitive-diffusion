@@ -1,0 +1,12 @@
+# @package _global_
+defaults:
+  - train_image_defaults
+  - /agent_config: beso_agent
+  - process_batch_config: defaults
+  - encoder_config: image_transformer
+  - _self_
+
+predict_past: True
+
+wandb:
+  group: beso-image

@@ -1,0 +1,24 @@
+_target_: movement_primitive_diffusion.models.prodmp_causal_transformer_inner_model.ProDMPCausalTransformerInnerModel
+_recursive_: False
+
+defaults:
+  - prodmp_handler_config: default_config
+
+state_size: null # set in python based on encoder
+action_size: null # set in python based on process_batch
+
+t_pred: ${t_pred}
+t_obs: ${t_obs}
+
+n_layers: 6
+n_heads: 4
+embedding_size: 256
+n_cond_layers: 0  # -> use an MLP instead of a transformer encoder
+dropout_probability_embedding: 0.0
+dropout_probability_attention: 0.3
+
+sigma_embedding_config:
+  _target_: movement_primitive_diffusion.networks.sigma_embeddings.SinusoidalEmbedding
+  _recursive_: False
+  embedding_size: ${..embedding_size}
+  hidden_size_factor: 4

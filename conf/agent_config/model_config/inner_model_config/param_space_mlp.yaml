@@ -1,0 +1,14 @@
+_target_: movement_primitive_diffusion.models.parameter_space_mlp_inner_model.ParameterSpaceMLPInnerModel
+_recursive_: False
+
+state_size: null # set in python based on encoder
+action_size: null # set in python based on process_batch
+
+num_layers: 4
+num_neurons: 128
+hidden_nonlinearity: LeakyReLU
+
+sigma_embedding_config:
+  _target_: movement_primitive_diffusion.networks.sigma_embeddings.FourierFeaturesEmbedding
+  _recursive_: False
+  embedding_size: 32

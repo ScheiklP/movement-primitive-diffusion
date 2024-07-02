@@ -1,0 +1,51 @@
+# @package dataset_config
+_target_: movement_primitive_diffusion.datasets.trajectory_dataset.SubsequenceTrajectoryDataset
+_recursive_: False
+
+ignore_shorter_trajectories: True
+subsequence_length: ${eval:'${t_obs}+${t_pred}-1'}
+trajectory_dirs: null # set in python code
+keys:
+  - right_pd_state
+  - right_pd_velocity
+  - left_pd_state
+  - left_pd_velocity
+  - right_pd_state_action
+  - right_pd_velocity_action
+  - left_pd_state_action
+  - left_pd_velocity_action
+  - target_positions_in_image
+  - marker_positions_in_image
+dt: 0.1
+target_dt: null
+normalize_keys:
+  - right_pd_state
+  - left_pd_state
+  - right_pd_state_action
+  - left_pd_state_action
+normalize_symmetrically: True # False: normalized to [0, 1] instead of [-1, 1]
+standardize_keys: False
+scaler_values:
+  right_pd_state:
+    min: null
+    max: null
+  left_pd_state:
+    min: null
+    max: null
+  right_pd_state_action:
+    min: null
+    max: null
+  left_pd_state_action:
+    min: null
+    max: null
+
+recalculate_velocities_from_to:
+  - [right_pd_state, right_pd_velocity]
+  - [left_pd_state, left_pd_velocity]
+  - [right_pd_state_action, right_pd_velocity_action]
+  - [left_pd_state_action, left_pd_velocity_action]
+
+image_sizes:
+  - [84, 84]
+crop_sizes:
+  - [76, 76]

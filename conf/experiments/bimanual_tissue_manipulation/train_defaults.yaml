@@ -1,0 +1,49 @@
+# @package _global_
+defaults:
+  - dataset_config: dataset
+  - workspace_config: vector
+  - _self_
+
+# Set what should be used to determine if model performance increased in testing in environment
+performance_metric: success_rate # can be anything that is returned in the dict of workspace.test_agent(agent)
+performance_direction: max # {min, max}
+
+device: auto  # {auto, cpu, cuda}. auto will select cuda if available, cpu otherwise
+
+t_obs: 3
+t_pred: 12
+t_act: 12
+predict_past: False
+
+train_split: null
+trajectory_dir: null
+dataset_fully_on_gpu: True
+
+fixed_split: True
+train_trajectory_dir: bimanual_tissue_manipulation_train
+val_trajectory_dir: bimanual_tissue_manipulation_val
+num_trajectories: 150
+
+data_loader_config:
+  shuffle: True
+  pin_memory: False
+  num_workers: 0
+  batch_size: 256
+
+epochs: 3000
+early_stopping: False
+eval_in_env_after_epochs: 100
+num_trajectories_in_env: -1 # -1 -> use all trajectories in ${val_trajectory_dir}
+save_distance: null # additionally to the best model, save model every n epochs
+
+group_from_overrides: False
+name_from_overrides: True
+ignore_in_name:
+  - group
+  - bimanual_tissue_manipulation
+
+wandb:
+  entity: ???
+  project: ???
+  group: ???
+  mode: online # online, offline, disabled

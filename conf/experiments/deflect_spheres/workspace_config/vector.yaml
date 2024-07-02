@@ -1,0 +1,39 @@
+# @package workspace_config
+_target_: movement_primitive_diffusion.workspaces.deflect_spheres.deflect_spheres_vector_workspace.DeflectSpheresEnvVectorWorkspace
+_recursive_: False
+
+t_act: ${t_act}
+
+num_parallel_envs: 25
+shared_memory: False
+async_vector_env: True
+show_images: True
+
+num_upload_successful_videos: 5
+num_upload_failed_videos: 5
+
+env_config:
+  _target_: movement_primitive_diffusion.workspaces.deflect_spheres.compat_layer.DeflectSpheresEnvCompatLayer
+  _recursive_: False
+
+  rgb_image_size: ${dataset_config.image_sizes}
+  rgb_image_crop_size: ${dataset_config.crop_sizes}
+  t_obs: ${t_obs}
+  time_step: ${dataset_config.dt}
+  frame_skip: 1
+  render_mode: HEADLESS
+  image_shape: [200, 200]
+  observation_type: STATE
+  action_type: POSITION
+  settle_steps: 30
+  single_agent: True
+  individual_agents: False
+  time_limit: 150  # in number of steps -> in simulated seconds: time_step * frame_skip * time_limit
+  num_objects: 1
+  num_deflect_to_win: 1
+
+  scaler_config:
+    normalize_keys: ${dataset_config.normalize_keys}
+    normalize_symmetrically: ${dataset_config.normalize_symmetrically}
+    standardize_keys: ${dataset_config.standardize_keys}
+    scaler_values:  null # set in python based on dataset

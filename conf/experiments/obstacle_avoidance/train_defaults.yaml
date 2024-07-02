@@ -1,0 +1,50 @@
+# @package _global_
+defaults:
+  - dataset_config: dataset
+  - workspace_config: vector
+  - _self_
+
+# Set what should be used to determine if model performance increased in testing in environment
+performance_metric: successful_mode_entropy # can be anything that is returned in the dict of workspace.test_agent(agent)
+performance_direction: max # {min, max}
+
+device: auto  # {auto, cpu, cuda}. auto will select cuda if available, cpu otherwise
+
+t_obs: 3
+t_pred: 12
+t_act: 12
+predict_past: False
+
+train_split: 0.9
+dataset_fully_on_gpu: True
+
+trajectory_dir: obstacle_avoidance
+
+data_loader_config:
+  shuffle: True
+  pin_memory: False
+  num_workers: 0
+  batch_size: 256
+
+ # Note: can be null, so training is only stopped by early_stopping
+epochs: 3000 # unet lowdim: 5000, unet video: 1500, unet hybrid: 3000, unet real img: 600
+early_stopping: False
+# Note: we early stop based on success rate in env -> early stopping patience
+# translates to eval_in_env_after_epochs * early_stopping_patience epochs.
+early_stopping_warmup_epochs: 300
+early_stopping_patience: 5
+eval_in_env_after_epochs: 100
+num_trajectories_in_env: 24 # 24 distinct ways through the obstacle course -> multimodality
+save_distance: null # additionally to the best model, save model every n epochs
+
+group_from_overrides: False
+name_from_overrides: True
+ignore_in_name:
+  - group
+  - obstacle_avoidance
+
+wandb:
+  entity: ???
+  project: ???
+  group: ???
+  mode: online # online, offline, disabled

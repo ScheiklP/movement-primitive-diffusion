@@ -1,0 +1,18 @@
+# @package agent_config.process_batch_config
+_target_: movement_primitive_diffusion.datasets.process_batch.ProcessBatch
+_recursive_: False
+
+t_obs: ${t_obs}
+t_pred: ${t_pred}
+relative_action_values: False
+predict_past: ${predict_past}
+
+# Note: the order matters here, because the action keys are concatenated
+action_keys:
+  - key: left_pivot_state_action
+    feature_size: null
+  - key: right_pivot_state_action
+    feature_size: null
+
+# Note: the order does NOT matter here, because the encoder receives a dict
+observation_keys: null # set in python based on encoder

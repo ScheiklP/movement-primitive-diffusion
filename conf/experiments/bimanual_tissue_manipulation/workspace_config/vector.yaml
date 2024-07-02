@@ -1,0 +1,47 @@
+# @package workspace_config
+_target_: movement_primitive_diffusion.workspaces.bimanual_tissue_manipulation.bimanual_tissue_manipulation_vector_workspace.BimanualTissueManipulationEnvVectorWorkspace
+_recursive_: False
+
+t_act: ${t_act}
+
+num_parallel_envs: 15 # TODO: based on cluster
+shared_memory: False
+async_vector_env: True
+show_images: False
+
+num_upload_successful_videos: 10
+num_upload_failed_videos: 10
+val_trajectory_dir: ${val_trajectory_dir}
+
+env_config:
+  _target_: movement_primitive_diffusion.workspaces.bimanual_tissue_manipulation.compat_layer.BimanualTissueManipulationEnvCompatLayer
+  _recursive_: False
+
+  rgb_image_size: ${dataset_config.image_sizes}
+  rgb_image_crop_size: ${dataset_config.crop_sizes}
+  t_obs: ${t_obs}
+  time_step: 0.01
+  frame_skip: 10
+  render_mode: HEADLESS  # on the server: change to HEADLESS
+  maximum_state_velocity: 25.0
+  image_shape: [200, 200]
+  observation_type: RGB
+  action_type: POSITION
+  settle_steps: 50
+  marker_radius: 3.0
+  target_radius: 3.0
+  randomize_marker: False
+  randomize_target: True
+  time_limit: 150  # in number of steps -> in simulated seconds: time_step * frame_skip * time_limit
+
+  scaler_config:
+    normalize_keys: ${dataset_config.normalize_keys}
+    normalize_symmetrically: ${dataset_config.normalize_symmetrically}
+    standardize_keys: ${dataset_config.standardize_keys}
+    scaler_values:  null # set in python based on dataset
+
+  reward_amount_dict:
+    sum_distance_markers_to_target: -0.002
+    sum_delta_distance_markers_to_target: -0.4
+    sum_markers_at_target: 0.004
+    successful_task: 100.0

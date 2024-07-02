@@ -1,0 +1,75 @@
+# @package workspace_config
+_target_: movement_primitive_diffusion.workspaces.grasp_lift_touch.grasp_lift_touch_vector_workspace.GraspLiftTouchEnvVectorWorkspace
+_recursive_: False
+
+t_act: ${t_act}
+
+num_parallel_envs: 15
+shared_memory: False
+async_vector_env: True
+show_images: False
+
+num_upload_successful_videos: 10
+num_upload_failed_videos: 10
+
+seed: 42
+
+env_config:
+  _target_: movement_primitive_diffusion.workspaces.grasp_lift_touch.compat_layer.GraspLiftTouchEnvCompatLayer
+  _recursive_: False
+
+  rgb_image_size: ${dataset_config.image_sizes}
+  rgb_image_crop_size: ${dataset_config.crop_sizes}
+  t_obs: ${t_obs}
+  time_step: 0.01
+  frame_skip: 10
+  render_mode: HEADLESS  # on the server: change to HEADLESS
+  image_shape: [200, 200]
+  observation_type: STATE
+  action_type: POSITION
+  settle_steps: 50
+  time_limit: 500  # in number of steps -> in simulated seconds: time_step * frame_skip * time_limit.
+  randomize_gallbladder_tracking_points: False
+  randomize_point_of_interest: False
+  cauter_has_to_activate_in_target: False
+
+  scaler_config:
+    normalize_keys: ${dataset_config.normalize_keys}
+    normalize_symmetrically: ${dataset_config.normalize_symmetrically}
+    standardize_keys: ${dataset_config.standardize_keys}
+    scaler_values:  null # set in python based on dataset
+
+  extra_scaler_values:
+    gallbladder_state:
+      max:
+      - 19.005871131394656
+      - 29.98472086536316
+      - 16.159621712050342
+      min:
+      - -136.13549387025444
+      - -32.65641012046402
+      - -175.5718870604943
+
+  reward_amount_dict:
+    ANY:
+      collision_cauter_gripper: -0.1
+      collision_cauter_gallbladder: -0.1
+      collision_cauter_liver: -0.1
+      collision_gripper_liver: -0.01
+      distance_cauter_target: -0.5
+      delta_distance_cauter_target: -1.0
+      gallbladder_is_grasped: 20.0
+      new_grasp_on_gallbladder: 10.0
+      lost_grasp_on_gallbladder: -10.0
+      gripper_pulls_gallbladder_out: 0.005
+      dynamic_force_on_gallbladder: -0.003
+      successful_task: 200.0
+      phase_change: 10.0
+      overlap_gallbladder_liver: -0.1
+      delta_overlap_gallbladder_liver: -0.01
+    GRASP:
+      distance_gripper_graspable_region: -0.2
+      delta_distance_gripper_graspable_region: -10.0
+    TOUCH:
+      cauter_delta_activation_in_target: 1.0
+      delta_distance_cauter_target: -5.0

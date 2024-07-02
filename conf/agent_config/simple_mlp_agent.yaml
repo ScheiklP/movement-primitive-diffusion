@@ -1,0 +1,43 @@
+_target_: movement_primitive_diffusion.agents.diffusion_agent.DiffusionAgent
+_recursive_: False
+
+defaults:
+  - sigma_distribution_config: rand_log_logistic
+  - model_config: diffusion_model
+  - sampler_config: ddim
+  - noise_scheduler_config: exponential_scheduler
+  - override model_config/inner_model_config: simple_mlp
+  - override model_config/scaling_config: epsilon_scaling
+  - _self_
+
+device: null  # set in python based on main config
+
+t_obs: ${t_obs}
+predict_past: ${predict_past}
+
+diffusion_steps: 100
+sigma_min: 0.05
+sigma_max: 10.0
+
+use_ema: True
+ema_config:
+  decay: 0.9999
+  min_decay: 0.0
+  update_after_step: 0
+  use_ema_warmup: True # https://github.com/columbia-ai-robotics/diffusion_policy/blob/main/diffusion_policy/model/diffusion/ema_model.py#L49
+  inv_gamma: 1.0
+  power: 0.75 # https://github.com/columbia-ai-robotics/diffusion_policy/blob/main/diffusion_policy/model/diffusion/ema_model.py#L20
+
+optimizer_config:
+  _target_: torch.optim.AdamW
+  lr: 1.0e-4
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+  weight_decay: 1.0e-6
+
+lr_scheduler_config:
+  _target_: movement_primitive_diffusion.utils.lr_scheduler.get_scheduler
+  name: cosine
+  num_warmup_steps: 500
+  num_training_steps: null # set in python based on dataloader size and number of epochs to train
+  last_epoch: -1 # use the current epoch. Can be adjusted to continue training.

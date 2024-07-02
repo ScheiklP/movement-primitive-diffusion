@@ -1,0 +1,12 @@
+# @package _global_
+defaults:
+  - train_defaults
+  - /agent_config: prodmp_agent
+  - process_batch_config: prodmp
+  - encoder_config: state_mlp
+  - prodmp_handler_config: prodmp_handler
+  - override /agent_config/model_config/inner_model_config: prodmp_mlp
+  - _self_
+
+wandb:
+  group: alpha-test

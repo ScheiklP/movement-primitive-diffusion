@@ -1,0 +1,3 @@
+_target_: movement_primitive_diffusion.models.scaling.KarrasScaling
+_recursive_: False
+sigma_data: 0.5 # set to null, to determine sigma_data from the dataset

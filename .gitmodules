@@ -1,0 +1,3 @@
+[submodule "dependencies/MP_PyTorch"]
+	path = dependencies/MP_PyTorch
+	url = https://github.com/ALRhub/MP_PyTorch.git

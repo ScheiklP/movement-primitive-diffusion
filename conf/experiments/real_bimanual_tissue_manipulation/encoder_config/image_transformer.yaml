@@ -1,0 +1,17 @@
+# @package agent_config.encoder_config
+_target_: movement_primitive_diffusion.encoder.Encoder
+_recursive_: False
+
+t_obs: ${t_obs}
+
+network_configs:
+  - observation_key: image_with_targets_and_markers
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.resnet.IndependentTimeStepsResNet
+      feature_size: null # set in python based on dataset
+      output_size: ${image_embedding_size}
+      flatten_time: False
+
+aggregator_config:
+  _target_: movement_primitive_diffusion.aggregators.concatenate.ConcatenateAggregator

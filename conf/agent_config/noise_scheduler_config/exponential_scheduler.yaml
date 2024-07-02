@@ -1,0 +1,4 @@
+_target_: movement_primitive_diffusion.noise_schedulers.ExponentialNoiseScheduler
+_recursive_: False
+sigma_min: ${agent_config.sigma_min}
+sigma_max: ${agent_config.sigma_max}

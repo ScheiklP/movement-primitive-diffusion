@@ -1,0 +1,13 @@
+_target_: movement_primitive_diffusion.models.lstm_gmm_inner_model.LSTMGMMInnerModel
+_recursive_: False
+
+state_size: null # set in python based on encoder
+action_size: null # set in python based on process_batch.
+t_pred: ${t_pred}
+num_layers: 4
+num_modes: 10
+mlp_dims:
+  - 1024
+  - 1024
+
+rnn_hidden_dim: 400

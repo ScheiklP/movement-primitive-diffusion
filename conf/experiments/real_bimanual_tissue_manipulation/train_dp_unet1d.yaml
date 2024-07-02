@@ -1,0 +1,14 @@
+# @package _global_
+defaults:
+  - train_defaults
+  - /agent_config: diffusion_policy_unet1d_agent
+  - process_batch_config: defaults
+  - encoder_config: state_flatten_time
+  - _self_
+
+t_pred: 10 # Has to be reduced to 10, because otherwise the tensor dimensions do not line up correctly
+t_act: 10
+predict_past: True
+
+wandb:
+  group: dp-unet

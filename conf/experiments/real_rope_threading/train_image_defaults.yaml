@@ -1,0 +1,23 @@
+# @package _global_
+defaults:
+  - train_defaults
+  - _self_
+
+image_embedding_size: 128
+
+# TODO:
+# dataset_fully_on_gpu: True
+dataset_fully_on_gpu: False
+
+dataset_config:
+  image_keys:
+    - image
+  image_sizes:
+    - [240, 320]
+  crop_sizes:
+    - [216, 288]
+  random_crop: True
+  normalize_images: True
+
+data_loader_config:
+  batch_size: 64

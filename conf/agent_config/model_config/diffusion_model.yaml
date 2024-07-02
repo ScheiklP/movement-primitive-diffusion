@@ -1,0 +1,7 @@
+_target_: movement_primitive_diffusion.models.diffusion_model.DiffusionModel
+_recursive_: False
+
+defaults:
+  - inner_model_config: ???
+  - scaling_config: ???
+  - _self_

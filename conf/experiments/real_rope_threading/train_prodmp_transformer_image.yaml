@@ -1,0 +1,12 @@
+# @package _global_
+defaults:
+  - train_image_defaults
+  - /agent_config: prodmp_transformer_agent
+  - process_batch_config: prodmp
+  - encoder_config: image_transformer
+  - prodmp_handler_config: prodmp_handler
+  - override /agent_config/model_config/inner_model_config: prodmp_transformer
+  - _self_
+
+wandb:
+  group: mpd-transformer-image

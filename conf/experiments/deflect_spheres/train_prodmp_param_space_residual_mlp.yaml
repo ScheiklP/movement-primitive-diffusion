@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - train_defaults
+  - /agent_config: prodmp_param_space_agent
+  - process_batch_config: prodmp_param_space
+  - encoder_config: state_mlp
+  - override /agent_config/model_config/inner_model_config: param_space_residual_mlp
+  - _self_
+
+wandb:
+  group: btm-param-space-resmlp

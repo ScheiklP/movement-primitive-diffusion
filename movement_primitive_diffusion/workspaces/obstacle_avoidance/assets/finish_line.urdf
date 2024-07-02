@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<!-- https://github.com/ALRhub/SimulationFramework/blob/obs_avoid_icml/envs/gym_obstacle_avoidance_env/gym_obstacle_avoidance/envs/objects/oa_objects.py -->
+<robot name="finish_line">
+
+  <link name="finish_line_base">
+    <visual>
+      <geometry><box size="1 0.02 0.01"/></geometry>
+      <material name="green"><color rgba="0 1 0 0.3"/></material>
+    </visual>
+    <!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+    <!-- ixx = 1/12 * (h^2 + d^2) -->
+    <!-- iyy = 1/12 * (w^2 + d^2) -->
+    <!-- izz = 1/12 * (w^2 + h^2) -->
+    <!--
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.0000416" ixy="0" ixz="0" iyy="0.0833417" iyz="0" izz="0.0833667"/>
+    </inertial>
+    <collision>
+      <geometry><box size="1 0.02 0.01"/></geometry>
+    </collision>
+    -->
+  </link>
+
+<!--
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="world"/>
+    <child link="finish_line"/>
+  </joint>
+-->
+</robot>

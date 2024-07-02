@@ -1,0 +1,16 @@
+_target_: movement_primitive_diffusion.models.nll_decoder_inner_model.Decoder
+_recursive_: False
+
+state_size: null # set in python based on encoder
+action_size: null # set in python based on process_batch. required for prodmp_handler_config.
+
+latent_variable_size: ${agent_config.encoder_config.aggregator_config.latent_variable_size}
+additional_input_size: 0
+output_size: null # set in python based on prodmp handler
+num_layers_mean_network: 2
+num_layers_covariance_network: 2
+num_neurons_mean_network: 256
+num_neurons_covariance_network: 256
+hidden_nonlinearity_mean_network: LeakyReLU
+hidden_nonlinearity_covariance_network: "LeakyReLU"
+std_only: False

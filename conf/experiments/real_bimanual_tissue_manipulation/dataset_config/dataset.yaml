@@ -1,0 +1,80 @@
+# @package dataset_config
+_target_: movement_primitive_diffusion.datasets.trajectory_dataset.SubsequenceTrajectoryDataset
+_recursive_: False
+
+subsequence_length: ${eval:'${t_obs}+${t_pred}-1'}
+trajectory_dirs: null # set in python code
+keys:
+  - target_positions_in_image
+  - marker_positions_in_image
+  - left_pivot_state
+  - left_pivot_state_action
+  - left_pivot_velocity
+  - left_raw_force
+  - left_joint_values
+  - left_joint_velocities
+  - right_pivot_state
+  - right_pivot_state_action
+  - right_pivot_velocity
+  - right_raw_force
+  - right_joint_values
+  - right_joint_velocities
+
+dt: 0.1
+target_dt: null
+normalize_keys:
+  - left_pivot_state
+  - left_pivot_state_action
+  - left_joint_values
+  - right_pivot_state
+  - right_pivot_state_action
+  - right_joint_values
+  - left_pivot_velocity
+  - left_joint_velocities
+  - right_pivot_velocity
+  - right_joint_velocities
+normalize_symmetrically: True # False: normalized to [0, 1] instead of [-1, 1]
+standardize_keys:
+  - left_raw_force
+  - right_raw_force
+scaler_values:
+  left_pivot_state:
+    min: null
+    max: null
+  right_pivot_state:
+    min: null
+    max: null
+  left_pivot_state_action:
+    min: null
+    max: null
+  right_pivot_state_action:
+    min: null
+    max: null
+  left_pivot_velocity:
+    min: null
+    max: null
+  right_pivot_velocity:
+    min: null
+    max: null
+  left_raw_force:
+    mean: null
+    std: null
+  right_raw_force:
+    mean: null
+    std: null
+  left_joint_values:
+    min: null
+    max: null
+  right_joint_values:
+    min: null
+    max: null
+  left_joint_velocities:
+    min: null
+    max: null
+  right_joint_velocities:
+    min: null
+    max: null
+
+recalculate_velocities_from_to:
+  - [left_pivot_state_action, left_pivot_velocity_action]
+  - [right_pivot_state_action, right_pivot_velocity_action]

@@ -1,0 +1,18 @@
+_target_: movement_primitive_diffusion.models.parameter_space_residual_mlp_inner_model.ParameterSpaceResidualMLPInnerModel
+_recursive_: False
+
+state_size: null # set in python based on encoder
+action_size: null # set in python based on process_batch
+
+hidden_sizes: [256, 256, 256]
+blocks_per_layer: 1
+
+dropout_rate: 0.0
+spectral_norm: False
+norm: null
+hidden_nonlinearity: LeakyReLU
+
+sigma_embedding_config:
+  _target_: movement_primitive_diffusion.networks.sigma_embeddings.SinusoidalEmbedding
+  _recursive_: False
+  embedding_size: 64

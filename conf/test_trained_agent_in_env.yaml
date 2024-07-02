@@ -1,0 +1,17 @@
+config: ???
+weights: ???
+# For example:
+# config: wandb/latest-run/files/config.yaml
+# weights: wandb/latest-run/files/best_model.pth
+
+num_trajectories: 20
+
+to_change:
+  agent_config:
+    sampler_config:
+      _target_: movement_primitive_diffusion.samplers.euler.EulerSampler
+    diffusion_steps: 35
+
+# Set what should be used to determine if model performance increased in testing in environment
+performance_metric: success_rate # can be anything that is returned in the dict of workspace.test_agent(agent)
+performance_direction: max # {min, max}

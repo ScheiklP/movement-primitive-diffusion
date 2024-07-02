@@ -1,0 +1,82 @@
+# @package workspace_config
+_target_: movement_primitive_diffusion.workspaces.ligating_loop.ligating_loop_vector_workspace.LigatingLoopEnvVectorWorkspace
+_recursive_: False
+
+t_act: ${t_act}
+
+num_parallel_envs: 15
+shared_memory: False
+async_vector_env: True
+show_images: False
+
+num_upload_successful_videos: 10
+num_upload_failed_videos: 10
+
+env_config:
+  _target_: movement_primitive_diffusion.workspaces.ligating_loop.compat_layer.LigatingLoopEnvCompatLayer
+  _recursive_: False
+
+  rgb_image_size: ${dataset_config.image_sizes}
+  rgb_image_crop_size: ${dataset_config.crop_sizes}
+  t_obs: ${t_obs}
+  time_step: 0.1
+  frame_skip: 1
+  render_mode: HEADLESS  # on the server: change to HEADLESS
+  image_shape: [200, 200]
+  observation_type: STATE
+  action_type: POSITION
+  settle_steps: 50
+  time_limit: 300  # in number of steps -> in simulated seconds: time_step * frame_skip * time_limit.
+  randomize_marking_position: False
+  band_width: 8.0
+  disable_in_cavity_checks: True
+  create_scene_kwargs:
+    stiff_loop: False
+    num_rope_points: 60
+    loop_radius: 20
+
+  scaler_config:
+    normalize_keys: ${dataset_config.normalize_keys}
+    normalize_symmetrically: ${dataset_config.normalize_symmetrically}
+    standardize_keys: ${dataset_config.standardize_keys}
+    scaler_values:  null # set in python based on dataset
+
+  extra_scaler_values:
+    cavity_tracking_positions:
+      max:
+      - 14.773367297555348
+      - 20.53920715926336
+      - 51.080809382382405
+      min:
+      - -16.491376891982828
+      - -12.147180937712559
+      - 0.0
+    loop_tracking_positions:
+      max:
+      - 28.909054060185966
+      - 42.96747097831167
+      - 85.49038948427281
+      min:
+      - -123.26520692566274
+      - -62.27373018859149
+      - 26.246212520984493
+    marking_tracking_positions:
+      max:
+      - 13.069383588122712
+      - 16.910423843460396
+      - 33.191628960002966
+      min:
+      - -14.325853398789114
+      - -11.439190601049154
+      - 26.29449825639324
+
+  reward_amount_dict:
+    distance_loop_to_marking_center: -0.05
+    delta_distance_loop_to_marking_center: -100.0
+    loop_center_in_cavity: 0.0
+    instrument_not_in_cavity: -0.0
+    instrument_shaft_collisions: -0.05
+    loop_marking_overlap: 1.0
+    loop_closed_around_marking: 6.0
+    loop_closed_in_thin_air: -0.1
+    successful_task: 100.0

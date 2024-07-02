@@ -1,0 +1,47 @@
+# @package _global_
+defaults:
+  - dataset_config: dataset
+  - workspace_config: dummy
+  - _self_
+
+# Set what should be used to determine if model performance increased in testing in environment
+performance_metric: end_point_deviation # can be anything that is returned in the dict of workspace.test_agent(agent) or in epoch_info
+performance_direction: min # {min, max}
+
+device: auto  # {auto, cpu, cuda}. auto will select cuda if available, cpu otherwise
+
+t_obs: 3
+t_pred: 12
+t_act: 12
+predict_past: False
+
+train_split: null
+dataset_fully_on_gpu: True
+
+fixed_split: True
+train_trajectory_dir: rw_grasp_lift_touch_train
+val_trajectory_dir: rw_grasp_lift_touch_val
+
+data_loader_config:
+  shuffle: True
+  pin_memory: False
+  num_workers: 0
+  batch_size: 256
+
+epochs: 3000
+early_stopping: False
+eval_in_env_after_epochs: 9999
+num_trajectories_in_env: null
+save_distance: 500 # additionally to the best model, save model every n epochs
+
+group_from_overrides: False
+name_from_overrides: True
+ignore_in_name:
+  - group
+  - real_grasp_lift_touch
+
+wandb:
+  entity: trajdiff
+  project: ???
+  group: ???
+  mode: online # online, offline, disabled

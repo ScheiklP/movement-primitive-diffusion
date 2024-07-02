@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - train_defaults
+  - /agent_config: lstm_gmm_agent
+  - process_batch_config: prodmp
+  - encoder_config: state_flatten_time
+  - _self_
+
+wandb:
+  group: test-lstm-gmm
+  mode: online

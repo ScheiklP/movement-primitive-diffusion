@@ -1,0 +1,6 @@
+_target_: movement_primitive_diffusion.distributions.RandLogLogistic
+_recursive_: False
+loc: 0.5
+scale: 0.5
+min_value: ${agent_config.sigma_min}
+max_value: ${agent_config.sigma_max}

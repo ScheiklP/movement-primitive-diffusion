@@ -1,0 +1,36 @@
+# @package agent_config.encoder_config
+_target_: movement_primitive_diffusion.encoder.Encoder
+_recursive_: False
+
+t_obs: ${t_obs}
+
+# Most simple state based config just flattens out the time and concatenates all the values
+# NOTE: The order matters! The same order will be used in process_batch and the encoder
+network_configs:
+  - observation_key: cavity_tracking_positions_normalized
+    feature_size: null # set in python based on dataset TODO: set value manually to make code easier?
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.FlattenTime
+
+  - observation_key: loop_tracking_positions_normalized
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.FlattenTime
+
+  - observation_key: marking_tracking_positions_normalized
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.FlattenTime
+
+  - observation_key: loop_tpsdc_state
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.FlattenTime
+
+  - observation_key: loop_tpsdc_velocity
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.layers.FlattenTime
+
+aggregator_config:
+  _target_: movement_primitive_diffusion.aggregators.concatenate.ConcatenateAggregator

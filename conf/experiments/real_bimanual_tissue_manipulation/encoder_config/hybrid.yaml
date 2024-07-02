@@ -1,0 +1,66 @@
+# @package agent_config.encoder_config
+_target_: movement_primitive_diffusion.encoder.Encoder
+_recursive_: False
+
+t_obs: ${t_obs}
+
+# Most simple state based config just flattens out the time and concatenates all the values
+network_configs:
+  - observation_key: target_positions_in_image
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.mlp.DependentTimeStepsMLP
+      feature_size: null
+      num_layers: 2
+      num_neurons: 8
+      time_steps: ${t_obs}
+
+  - observation_key: left_pivot_state
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.mlp.DependentTimeStepsMLP
+      feature_size: null
+      num_layers: 2
+      num_neurons: 8
+      time_steps: ${t_obs}
+
+  - observation_key: right_pivot_state
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.mlp.DependentTimeStepsMLP
+      feature_size: null
+      num_layers: 2
+      num_neurons: 8
+      time_steps: ${t_obs}
+
+  - observation_key: left_pivot_velocity
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.mlp.DependentTimeStepsMLP
+      feature_size: null
+      num_layers: 2
+      num_neurons: 8
+      time_steps: ${t_obs}
+
+  - observation_key: right_pivot_velocity
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.mlp.DependentTimeStepsMLP
+      feature_size: null
+      num_layers: 2
+      num_neurons: 8
+      time_steps: ${t_obs}
+
+  # - observation_key: image
+  # - observation_key: image_with_targets
+  # - observation_key: image_with_markers
+  - observation_key: image_with_targets_and_markers
+    feature_size: null # set in python based on dataset
+    network_config:
+      _target_: movement_primitive_diffusion.networks.resnet.DependentTimeStepsResNet
+      feature_size: null
+      output_size: 128
+      time_steps: ${t_obs}
+
+aggregator_config:
+  _target_: movement_primitive_diffusion.aggregators.concatenate.ConcatenateAggregator

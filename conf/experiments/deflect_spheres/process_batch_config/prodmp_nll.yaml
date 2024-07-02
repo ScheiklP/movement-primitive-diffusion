@@ -1,0 +1,10 @@
+# @package agent_config.process_batch_config
+defaults:
+  - prodmp
+  - _self_
+
+_target_: movement_primitive_diffusion.datasets.process_batch.ProcessBatchProDMPNLL
+_recursive_: False
+
+additional_decoder_input_keys: null
+dt: ${dataset_config.dt} # TODO could also be set based on ${dataset_config.target_dt}, if not null

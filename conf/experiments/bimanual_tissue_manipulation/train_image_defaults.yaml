@@ -1,0 +1,24 @@
+# @package _global_
+defaults:
+  - train_defaults
+  - _self_
+
+image_embedding_size: 128
+
+dataset_config:
+  image_keys:
+    - rgb
+  image_sizes:
+    - [256, 256]
+  crop_sizes:
+    - [224, 224]
+  random_crop: True
+  normalize_images: True
+
+data_loader_config:
+  batch_size: 64
+
+workspace_config:
+  env_config:
+    with_rgb_images: True
+    image_shape: [256, 256]

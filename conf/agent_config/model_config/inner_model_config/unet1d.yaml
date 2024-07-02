@@ -1,0 +1,16 @@
+_target_: movement_primitive_diffusion.models.conditional_unet1d_inner_model.ConditionalUnet1D
+_recursive_: False
+
+state_size: null # set in python based on encoder
+action_size: null # set in python based on process_batch
+
+down_sizes: [256, 512, 1024] # for image: [512, 1024, 2048]
+kernel_size: 5
+n_groups: 8
+predict_scale_of_condition: True
+
+sigma_embedding_config:
+  _target_: movement_primitive_diffusion.networks.sigma_embeddings.SinusoidalEmbedding
+  _recursive_: False
+  embedding_size: 128
+  hidden_size_factor: 4

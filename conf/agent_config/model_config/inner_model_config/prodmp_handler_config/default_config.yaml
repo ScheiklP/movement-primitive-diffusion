@@ -1,0 +1,23 @@
+_target_: movement_primitive_diffusion.utils.mp_utils.ProDMPHandler
+_recursive_: False
+
+num_dof: ${agent_config.model_config.inner_model_config.action_size}
+dt: ${dataset_config.dt} # TODO could also be set based on ${dataset_config.target_dt}, if not null
+precompute_dt: 0.01
+traj_steps: ${t_pred}
+weights_scale: 1.0
+goal_scale: 1.0
+num_basis: ${t_pred}
+tau_factor: 1.0 # tau = dt * traj_steps * tau_factor
+basis_bandwidth_factor: 3.0
+alpha: 25.0
+alpha_phase: 2.0
+num_basis_outside: 0
+mp_type: prodmp
+learn_tau: False
+learn_delay: False
+relative_goal: True
+auto_scale_basis: False
+disable_goal: False
+device: ${device}
+traj_type: POSITION

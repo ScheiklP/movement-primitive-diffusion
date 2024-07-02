@@ -1,0 +1,2 @@
+_target_: movement_primitive_diffusion.noise_schedulers.CosineNoiseScheduler
+_recursive_: False

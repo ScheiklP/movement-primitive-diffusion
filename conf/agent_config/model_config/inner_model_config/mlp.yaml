@@ -1,0 +1,17 @@
+_target_: movement_primitive_diffusion.models.mlp_inner_model.MLPInnerModel
+_recursive_: False
+
+state_size: null # set in python based on encoder
+action_size: null # set in python based on process_batch
+
+t_pred: ${t_pred}
+num_layers: 4
+hidden_size: 128
+#hidden_nonlinearity: LeakyReLU
+#min_tau: ${dataset_config.dt} # Set a lower threshold for learned tau
+#max_tau: 10.0
+
+sigma_embedding_config:
+  _target_: movement_primitive_diffusion.networks.sigma_embeddings.FourierFeaturesEmbedding
+  _recursive_: False
+  embedding_size: 32

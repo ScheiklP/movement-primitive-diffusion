@@ -1,0 +1,17 @@
+# @package agent_config.process_batch_config
+defaults:
+  - defaults
+  - _self_
+
+_target_: movement_primitive_diffusion.datasets.process_batch.ProcessBatchProDMP
+_recursive_: False
+
+initial_values_come_from_action_data: True # For time step t, get the initial values from t-1.
+
+initial_position_keys:
+  - tool_position_action
+  - tool_roll_action
+
+initial_velocity_keys:
+  - tool_position_velocity_action
+  - tool_roll_velocity_action

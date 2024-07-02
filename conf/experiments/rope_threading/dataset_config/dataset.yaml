@@ -1,0 +1,37 @@
+# @package dataset_config
+_target_: movement_primitive_diffusion.datasets.trajectory_dataset.SubsequenceTrajectoryDataset
+_recursive_: False
+
+subsequence_length: ${eval:'${t_obs}+${t_pred}-1'}
+trajectory_dirs: null # set in python code
+keys:
+  - gripper_tpsd_state
+  - gripper_tpsd_state_action
+  - eyelet_center_pose
+  - rope_tracking_points_normalized
+dt: 0.1
+target_dt: null
+normalize_keys:
+  - gripper_tpsd_state
+  - gripper_tpsd_state_action
+  - eyelet_center_pose
+normalize_symmetrically: True
+standardize_keys: []
+scaler_values:
+    gripper_tpsd_state_action:
+      min: null
+      max: null
+    gripper_tpsd_state:
+      min: null
+      max: null
+    eyelet_center_pose:
+      min: null
+      max: null
+recalculate_velocities_from_to:
+    - [gripper_tpsd_state, gripper_tpsd_velocity]
+    - [gripper_tpsd_state_action, gripper_tpsd_velocity_action]
+
+image_sizes:
+  - [84, 84]
+crop_sizes:
+  - [76, 76]

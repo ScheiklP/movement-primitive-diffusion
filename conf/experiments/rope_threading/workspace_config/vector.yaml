@@ -1,0 +1,63 @@
+# @package workspace_config
+_target_: movement_primitive_diffusion.workspaces.rope_threading.rope_threading_vector_workspace.RopeThreadingEnvVectorWorkspace
+_recursive_: False
+
+t_act: ${t_act}
+
+num_parallel_envs: 15
+shared_memory: False
+async_vector_env: True
+show_images: False
+
+num_upload_successful_videos: 10
+num_upload_failed_videos: 10
+
+seed: 42
+
+env_config:
+  _target_: movement_primitive_diffusion.workspaces.rope_threading.compat_layer.RopeThreadingEnvCompatLayer
+  _recursive_: False
+
+  sim_dt: 0.01 # simulation time step
+  control_dt: ${dataset_config.dt} # time between execution of consecutive actions
+  t_obs: ${t_obs}
+  time_limit: 250  # in number of steps -> in simulated seconds: time_step * frame_skip * time_limit
+  observation_type: STATE
+  action_type: POSITION
+  render_mode: HEADLESS
+  image_shape: [200, 200]
+  rgb_image_size: ${dataset_config.image_sizes}
+  rgb_image_crop_size: ${dataset_config.crop_sizes}
+  calculate_accelerations: True
+
+  scaler_config:
+    normalize_keys: ${dataset_config.normalize_keys}
+    normalize_symmetrically: ${dataset_config.normalize_symmetrically}
+    standardize_keys: ${dataset_config.standardize_keys}
+    scaler_values:  null # set in python based on dataset
+
+  extra_scaler_values:
+    rope_tracking_points:
+      max:
+      - 113.36068517811222
+      - 49.269224235676305
+      - 55.05092326083307
+      min:
+      - 30.061936805810344
+      - -29.05295790274992
+      - 3.835490264511867
+
+  # kwargs
+  fraction_of_rope_to_pass: 0.05
+  reward_amount_dict:
+    passed_eye: 10.0
+    lost_eye: -20.0  # more than passed_eye
+    goal_reached: 100.0
+    lost_grasp: -0.1
+    collision: -0.1
+    floor_collision: -0.1
+    moved_towards_eye: 200.0
+    moved_away_from_eye: -200.0
+    workspace_violation: -0.01
+    state_limit_violation: -0.01
+    delta_fraction_rope_passed: 200.0

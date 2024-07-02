@@ -1,0 +1,7 @@
+defaults:
+  - prodmp_agent
+  - override model_config/scaling_config: absolute_scaling
+  - _self_
+
+_target_: movement_primitive_diffusion.agents.parameter_space_diffusion_agent.ParameterSpaceDiffusionAgent
+_recursive_: False

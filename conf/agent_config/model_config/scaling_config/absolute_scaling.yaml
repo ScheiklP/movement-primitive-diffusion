@@ -1,0 +1,2 @@
+_target_: movement_primitive_diffusion.models.scaling.Absolute
+_recursive_: False

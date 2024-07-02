@@ -1,0 +1,44 @@
+# @package dataset_config
+_target_: movement_primitive_diffusion.datasets.trajectory_dataset.SubsequenceTrajectoryDataset
+_recursive_: False
+
+subsequence_length: ${eval:'${t_obs}+${t_pred}-1'}
+trajectory_dirs: null # set in python code
+keys:
+  - right_ptsd_state
+  - right_ptsd_velocity
+  - right_ptsd_state_action
+  - right_ptsd_velocity_action
+  - active_sphere_position
+  - sphere_positions
+dt: 0.03333333333
+target_dt: null
+normalize_keys:
+  - right_ptsd_state
+  - right_ptsd_state_action
+  - active_sphere_position
+  - sphere_positions
+normalize_symmetrically: True # False: normalized to [0, 1] instead of [-1, 1]
+standardize_keys: False
+scaler_values:
+    right_ptsd_state:
+      min: null
+      max: null
+    right_ptsd_state_action:
+      min: null
+      max: null
+    sphere_positions:
+      min: null
+      max: null
+    active_sphere_position:
+      min: null
+      max: null
+
+recalculate_velocities_from_to:
+    - [right_ptsd_state, right_ptsd_velocity]
+    - [right_ptsd_state_action, right_ptsd_velocity_action]
+
+image_sizes:
+  - [84, 84]
+crop_sizes:
+  - [76, 76]

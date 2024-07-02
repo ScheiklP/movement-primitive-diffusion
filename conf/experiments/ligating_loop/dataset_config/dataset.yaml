@@ -1,0 +1,37 @@
+# @package dataset_config
+_target_: movement_primitive_diffusion.datasets.trajectory_dataset.SubsequenceTrajectoryDataset
+_recursive_: False
+
+subsequence_length: ${eval:'${t_obs}+${t_pred}-1'}
+trajectory_dirs: null # set in python code
+keys:
+  - cavity_tracking_positions_normalized
+  - loop_tracking_positions_normalized
+  - marking_tracking_positions_normalized
+  - loop_tpsdc_state_action
+  - loop_tpsdc_velocity_action
+  - loop_tpsdc_state
+  - loop_tpsdc_velocity
+dt: 0.1
+target_dt: null
+normalize_keys:
+  - loop_tpsdc_state_action
+  - loop_tpsdc_state
+normalize_symmetrically: True # False: normalized to [0, 1] instead of [-1, 1]
+standardize_keys: False
+scaler_values:
+  loop_tpsdc_state_action:
+    min: null
+    max: null
+  loop_tpsdc_state:
+    min: null
+    max: null
+
+recalculate_velocities_from_to:
+  - [loop_tpsdc_state_action, loop_tpsdc_velocity_action]
+  - [loop_tpsdc_state, loop_tpsdc_velocity]
+
+image_sizes:
+  - [84, 84]
+crop_sizes:
+  - [76, 76]
