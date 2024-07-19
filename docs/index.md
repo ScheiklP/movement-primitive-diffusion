@@ -24,6 +24,7 @@ for high-quality robotic motion generation that focuses on gentle manipulation o
     <a href="https://arxiv.org/abs/2312.10008"><i class="fas fa-file-pdf"></i> Paper (arXiv)</a> |
     <a href="https://github.com/ScheiklP/movement-primitive-diffusion"><i class="fas fa-code"></i> Code</a> |
     <a href="https://zenodo.org/doi/10.5281/zenodo.12625708"><i class="fas fa-database"></i> Training Data</a>
+    <a href="https://youtu.be/4WrInb-U2vg"><i class="fas fa-youtube"></i> Video</a>
 </p>
 
 ---
