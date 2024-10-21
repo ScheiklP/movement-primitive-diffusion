@@ -776,7 +776,7 @@ if __name__ == "__main__":
 
     git_repo = git.Repo(".", search_parent_directories=True)
     git_root = git_repo.git.rev_parse("--show-toplevel")
-    trajectories_root = Path(git_root) / "data" / f"obstacle_avoidance_trajectories_{dataset_hz}_hz"
+    trajectories_root = Path(git_root) / "data" / f"obstacle_avoidance"
 
     dataset = TrajectoryDataset(
         trajectory_dirs=[path for path in trajectories_root.iterdir() if path.is_dir()],
