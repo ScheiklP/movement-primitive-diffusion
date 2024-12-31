@@ -1,7 +1,6 @@
 from pathlib import Path
 from typing import List, Optional, Union
 import numpy as np
-from moviepy.video.fx.resize import resize
 from moviepy.video.io.ImageSequenceClip import ImageSequenceClip
 
 
@@ -20,7 +19,7 @@ def save_video_from_array(frames: List[np.ndarray], fps: Union[float, int], file
 
     if resize_height is not None:
         # Resize the video to the specified height
-        video_clip = video_clip.fx(resize, height=resize_height)
+        video_clip = video_clip.resized(height=resize_height)
 
     # Write the video to the specified output file
     video_clip.write_videofile(str(file_path), codec="libx264", audio=False, fps=fps)
