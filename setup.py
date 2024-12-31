@@ -28,6 +28,7 @@ setup(
         "opencv-python",
         "plotly", # For ObstacleAvoidance
         "pandas", # For ObstacleAvoidance
+        "addict",
     ],
     python_requires=">=3.10",
 )
