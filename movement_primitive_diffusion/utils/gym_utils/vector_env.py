@@ -8,7 +8,7 @@ import numpy as np
 from numpy.typing import NDArray
 
 import gymnasium as gym
-from gymnasium.vector.utils.spaces import batch_space
+from gymnasium.vector.utils.space_utils import batch_space
 
 
 __all__ = ["VectorEnv"]
